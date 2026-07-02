@@ -1,0 +1,30 @@
+---
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="container">
+    <div class="row">
+      <span class="canon">
+        <span class="dot"></span>
+        Infraestructura: Mika · Mikata AI Lab
+      </span>
+      <span class="rights">© {year} · Miguel Mata · construido con Astro</span>
+    </div>
+  </div>
+</footer>
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    margin-top: 80px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .canon { display: flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.3px; }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 6px var(--signal);
+  }
+</style>

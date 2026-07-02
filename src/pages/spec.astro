@@ -1,0 +1,141 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Spec · Mika Core · Mikata AI Lab" description="Spec técnico de Mika Core · infraestructura agéntica audit-first · FastAPI + Azure SQL + Container Apps.">
+  <Header />
+  <main class="container">
+    <header class="head">
+      <span class="pill bronce">Spec técnico</span>
+      <h1>Mika Core</h1>
+      <p>infraestructura agéntica audit-first · FastAPI + Azure Container Apps + SQL Serverless</p>
+    </header>
+
+    <section>
+      <h2>arquitectura</h2>
+      <pre><code>{`Client (Flutter · Web · CLI · MCP)
+   ↓
+FastAPI · Mika Core
+   ↓
+Executor · resuelve Operation por catalog key
+   ↓
+LLM branch · con guardián semántico pre-output
+   ↓
+Azure SQL Serverless (ml* schema por vertical)
+   ↓
+mlTrace (audit anonimizado) + Memory Layer (embeddings)`}</code></pre>
+    </section>
+
+    <section>
+      <h2>capas</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="pill bronce">Capa 1 · autoconciencia</span>
+          <h3>Personas + agencia</h3>
+          <ul>
+            <li>5 personas orquestadoras · Mika + 4 aliadas</li>
+            <li>MCP server "Mika vía Claude Code"</li>
+            <li>Canon límites de agencia declarativos</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Capa 2 · observabilidad</span>
+          <h3>Guardián + state machine</h3>
+          <ul>
+            <li>Log stream tail-live (mobile-ready)</li>
+            <li>Guardián semántico LLM-based (Prio 2)</li>
+            <li>Pipeline state machine (Prio 3)</li>
+            <li>Endpoints /guardian/reviews · approve/reject</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Capa 3 · agencia</span>
+          <h3>ExecutionPlan + Approval</h3>
+          <ul>
+            <li>Schema ExecutionPlan + AgencyApproval</li>
+            <li>Flujo end-to-end con Mika real</li>
+            <li>Límites de acción per operator</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Memory Layer</span>
+          <h3>Recuerdo persistente</h3>
+          <ul>
+            <li>mika.memory.save · recall · search</li>
+            <li>Embeddings vía semantic search</li>
+            <li>IsProtected canon inmune a delete</li>
+            <li>Backup script + cron nightly 23:30</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>stack</h2>
+      <ul class="stack-list">
+        <li><strong>Backend:</strong> Python 3.12 · FastAPI · uvicorn · pyodbc · Azure SDK</li>
+        <li><strong>LLM:</strong> Claude Sonnet 5 (default) · Opus 4.7 (reasoning) · Fable 5 (experiment)</li>
+        <li><strong>Auth:</strong> Entra ID Easy Auth · Bearer tokens</li>
+        <li><strong>Data:</strong> Azure SQL Serverless (auto-pause) · schema por vertical (ml* · mrh* · chk*)</li>
+        <li><strong>Deploy:</strong> Azure Container Apps · CI/CD GitHub Actions</li>
+        <li><strong>Frontend:</strong> Flutter 3.35 (mobile + web + APK) · Astro (blog) · Ionic + Angular (Clínica Dental) · Blazor (MOS RH)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>reglas canon operativas</h2>
+      <ul class="rules-list">
+        <li><span class="k">salud</span> Sábado: cero código · Capa C guardián (deepChan) enforce</li>
+        <li><span class="k">corte</span> 10pm sagrado · víspera Tysabri más estricto</li>
+        <li><span class="k">canon</span> No inventar hora · leer logs UTC o preguntar al usuario</li>
+        <li><span class="k">memoria</span> IsProtected para canon · nunca borrar sin approval</li>
+        <li><span class="k">audit</span> mlTrace anonimizado (SHA256 operator_hash · sin PII)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>portfolio verticales</h2>
+      <ul class="stack-list">
+        <li>✅ <strong>CheckList Pro</strong> · Portfolio SaaS #1 · live Azure</li>
+        <li>✅ <strong>MikaLogistics + Vera</strong> · Portfolio SaaS #2 · live Azure</li>
+        <li>🚧 <strong>MOS RH</strong> · orquestación 4 IAs occidentales · Q3 2026</li>
+        <li>🚧 <strong>MikaFlow</strong> · reemplaza VisitaApp · Q3 2026</li>
+        <li>🚧 <strong>CitaMed</strong> · Q4 2026</li>
+        <li>🚧 <strong>StockSnap</strong> · Q4 2026</li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  .head { margin-bottom: 40px; }
+  .head h1 { margin: 12px 0 8px; }
+  .head p { color: var(--muted); }
+  section { margin-top: 40px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .card {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .card .pill { margin-bottom: 12px; }
+  .card h3 { margin: 8px 0 12px; font-size: 16px; color: var(--ink); }
+  .card ul { margin: 0 0 0 20px; padding: 0; }
+  .card li { font-size: 13px; color: var(--muted-text); margin: 4px 0; }
+  .stack-list { list-style: none; margin: 20px 0 0; padding: 0; }
+  .stack-list li { padding: 12px 0; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted-text); }
+  .stack-list li:last-child { border-bottom: 1px solid var(--border); }
+  .stack-list strong { color: var(--ink); margin-right: 6px; }
+  .rules-list { list-style: none; margin: 20px 0 0; padding: 0; }
+  .rules-list li { padding: 8px 0; font-size: 13px; color: var(--muted-text); display: flex; gap: 12px; align-items: baseline; }
+  .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 2px 8px; background: rgba(184,115,51,0.15); color: var(--bronce); border-radius: 4px; min-width: 60px; text-align: center; }
+</style>

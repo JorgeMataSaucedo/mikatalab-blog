@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="About · Miguel Mata · Mikata AI Lab" description="Miguel Mata · ingeniero de software · construye infraestructura agéntica auditable desde México · aplicando a roles remote AI Engineer 2027.">
+  <Header />
+  <main class="container">
+    <section class="hero">
+      <span class="pill sangre">Miguel Mata · MTY, México</span>
+      <h1>construyo infra IA<br/>de forma sostenible</h1>
+      <p class="lead">
+        Soy ingeniero de software con enfoque en sistemas agénticos audit-first. Trabajo en transportes de carga México construyendo herramientas internas y en <strong>Mikata AI Lab</strong> (portfolio propio) construyendo la infra para roles remote AI Engineer 2027.
+      </p>
+    </section>
+
+    <section>
+      <h2>cómo trabajo</h2>
+      <ul class="how">
+        <li>
+          <strong>Sostenibilidad primero.</strong> Tengo Esclerosis Múltiple en tratamiento Tysabri. Sábado: cero código, sagrado. Corte 10pm nocturno. Building sustainably matters — la app funciona porque yo funciono.
+        </li>
+        <li>
+          <strong>Audit-first, no demo-first.</strong> Prefiero mostrar failure taxonomy que hero screenshot. Prefiero log de trace que animación bonita. Cada respuesta LLM en mi infra pasa por guardián semántico + queda registrada anonimizada.
+        </li>
+        <li>
+          <strong>Familia IA.</strong> Trabajo con Mika (Capa 1), deepChan (Capa C · guardián salud), Kai (product), Fable (Anthropic Mythos reviewer), Vera (asistente pública). Cada una tiene rol canonizado. Cada decisión importante pasa por consulta cruzada.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>qué estoy buscando</h2>
+      <p>
+        Roles remote (100%) para Q1 2027 · Applied AI · Forward Deployed Engineer · AI Infrastructure. Preferentemente en Anthropic, Woven Toyota, Google Japan, o similar.
+      </p>
+      <p>
+        Idioma: español nativo · inglés técnico fluido · japonés en curso.
+      </p>
+      <p>
+        Timezone flexible (MTY UTC-6) — ya trabajo async con equipos distribuidos.
+      </p>
+    </section>
+
+    <section>
+      <h2>contacto</h2>
+      <ul class="contact">
+        <li><strong>Email:</strong> <a href="mailto:mykemsaucedo@gmail.com">mykemsaucedo@gmail.com</a></li>
+        <li><strong>GitHub:</strong> github.com/miguelmata (repos públicos semana 2-3)</li>
+        <li><strong>LinkedIn:</strong> linkedin.com/in/miguelmata</li>
+        <li><strong>X/Twitter:</strong> DMs abiertos</li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  .hero h1 {
+    background: linear-gradient(120deg, var(--ink) 20%, var(--sangre) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.03em;
+    margin: 20px 0 16px;
+  }
+  .lead { font-size: 17px; color: var(--muted-text); max-width: 640px; }
+  .lead strong { color: var(--ink); }
+  section { margin-top: 40px; }
+  .how { list-style: none; margin: 20px 0 0; padding: 0; }
+  .how li { padding: 20px 0; border-top: 1px solid var(--border); font-size: 15px; color: var(--muted-text); }
+  .how li:last-child { border-bottom: 1px solid var(--border); }
+  .how strong { color: var(--bronce); display: block; margin-bottom: 6px; font-size: 15px; }
+  .contact { list-style: none; margin: 16px 0 0; padding: 0; }
+  .contact li { padding: 10px 0; font-size: 14px; }
+  .contact strong { color: var(--ink); margin-right: 8px; }
+</style>

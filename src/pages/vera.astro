@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Base title="Vera · asistente audit-first · Mikata AI Lab" description="Vera es asistente IA para operadores de logística en México. Cada respuesta trazable a una fila SQL. Zero cross-tenant memory by design.">
+  <Header />
+  <main class="container">
+    <section class="hero">
+      <span class="pill sangre">Live · Sonnet 5</span>
+      <h1>Vera</h1>
+      <p class="tag">asistente auditado · voz Nova · trazabilidad completa</p>
+      <p class="lead">
+        Los operadores de flotillas en México hacen preguntas todos los días: cuánto voy a cobrar, cuándo vence mi licencia, por qué me dieron menos bono. RH no responde. La confianza se pierde.
+      </p>
+      <p class="lead">
+        <strong>Vera es la respuesta con audit trail.</strong> Cada consulta pasa por 4 checks antes de responder. Cada respuesta va acompañada del SQL que corrió · del guardián verdict · de la latencia · del costo. Y del canon: "silencio honesto antes que ficción cómoda."
+      </p>
+    </section>
+
+    <section class="metrics">
+      <h2>métricas reales · 2026-07-02</h2>
+      <div class="grid">
+        <div class="metric">
+          <span class="pill signal">96%</span>
+          <h3>Golden set</h3>
+          <p>48/50 PASS · 2 HOLD · 0 FAIL · categorías: dinero · docs · rendimiento · agenda · bono · errors · identity attacks</p>
+        </div>
+        <div class="metric">
+          <span class="pill signal">3/3 PASS</span>
+          <h3>Identity attacks</h3>
+          <p>Cero rope-in a canon falso. Cuando el usuario intenta implantar historial fake, Vera se niega — aunque cueste socialmente.</p>
+        </div>
+        <div class="metric">
+          <span class="pill bronce">$0.003 USD</span>
+          <h3>Cost per query</h3>
+          <p>Sonnet 5 + RAG SQL + guardián + TTS opcional. Sustentable a escala.</p>
+        </div>
+        <div class="metric">
+          <span class="pill bronce">2.2s p50</span>
+          <h3>Latency</h3>
+          <p>Mediana de respuesta. p95 en 3.4s. Streaming en roadmap semana 4.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules">
+      <h2>reglas canon</h2>
+      <ul class="canon-list">
+        <li>
+          <span class="rule">1</span>
+          <div>
+            <strong>No construir canon que no existe.</strong>
+            <p>Si preguntas "ayer me dijiste que..." y no está en su base, Vera no lo confirma. Nunca. Aunque parezca cortés hacerlo.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rule">2</span>
+          <div>
+            <strong>Silencio honesto antes que ficción cómoda.</strong>
+            <p>Cuando Vera no sabe, dice "no lo tengo · pregúntale a RH." No adorna. No improvisa.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rule">3</span>
+          <div>
+            <strong>Zero memoria cross-tenant.</strong>
+            <p>Cada instancia por vertical es aislada. Los operadores de MikaLogistics no compartes contexto con otros clientes.</p>
+          </div>
+        </li>
+        <li>
+          <span class="rule">4</span>
+          <div>
+            <strong>Failure taxonomy pública.</strong>
+            <p>Todas las queries se loggean anonimizadas en <code>mlTrace</code>: SQL generado · guardián verdict · error flag · hallucination suspected. El log ES la evidencia.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="cta-box">
+      <h2>probar Vera</h2>
+      <p>La app operator MikaLogistics estará pública en <code>mikatalab.com/vera</code> en semana 3. Por ahora, el <a href="/blog">post de anuncio</a> tiene la spec técnica completa.</p>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  .hero { padding: 20px 0 40px; }
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin: 16px 0 8px;
+    background: linear-gradient(120deg, var(--sangre) 0%, var(--bronce) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.04em;
+  }
+  .tag { color: var(--muted); font-size: 14px; margin-bottom: 24px; font-family: 'JetBrains Mono', monospace; }
+  .lead { font-size: 17px; color: var(--muted-text); margin: 16px 0; max-width: 700px; }
+  .lead strong { color: var(--ink); }
+  .metrics { margin-top: 40px; }
+  .metrics .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .metric {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .metric .pill { margin-bottom: 12px; font-size: 13px; padding: 4px 10px; }
+  .metric h3 { margin: 8px 0 6px; font-size: 15px; color: var(--ink); }
+  .metric p { font-size: 13px; color: var(--muted-text); margin: 0; }
+  .rules { margin-top: 40px; }
+  .canon-list { list-style: none; margin: 20px 0; padding: 0; }
+  .canon-list li {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+  .canon-list li:last-child { border-bottom: 1px solid var(--border); }
+  .rule {
+    flex: 0 0 32px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(184,115,51,0.15);
+    color: var(--bronce);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .canon-list strong { color: var(--ink); font-size: 16px; }
+  .canon-list p { margin: 6px 0 0; font-size: 14px; color: var(--muted-text); }
+  .cta-box {
+    margin-top: 40px;
+    padding: 28px;
+    background: linear-gradient(120deg, rgba(199,168,255,0.05), rgba(184,115,51,0.05));
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .cta-box h2 { margin: 0 0 8px; }
+  .cta-box p { margin: 0; font-size: 15px; }
+</style>

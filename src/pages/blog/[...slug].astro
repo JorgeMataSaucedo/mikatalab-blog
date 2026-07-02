@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id.replace(/\.md$/, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={`${post.data.title} · Mikata AI Lab`} description={post.data.description}>
+  <Header />
+  <main class="container">
+    <article>
+      <div class="meta">
+        <time>{post.data.pubDate.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+        {post.data.tags.map(t => <span class="tag">{t}</span>)}
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="desc">{post.data.description}</p>
+      <div class="content">
+        <Content />
+      </div>
+      <hr />
+      <div class="back"><a href="/blog">← volver al blog</a></div>
+    </article>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  article { max-width: 720px; margin: 0 auto; }
+  .meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .meta time { font-family: 'JetBrains Mono', monospace; }
+  .tag { padding: 2px 8px; border-radius: 6px; background: rgba(199,168,255,0.1); color: var(--sangre); font-size: 11px; }
+  h1 { margin: 16px 0 8px; }
+  .desc { color: var(--muted-text); font-size: 17px; margin-bottom: 32px; }
+  .content :global(h2) { margin-top: 44px; }
+  .content :global(h3) { margin-top: 28px; }
+  .content :global(p) { font-size: 16px; margin: 14px 0; }
+  .content :global(ul), .content :global(ol) { font-size: 16px; }
+  .content :global(li) { margin: 6px 0; }
+  .content :global(pre) { margin: 20px 0; font-size: 13px; }
+  .content :global(blockquote) { font-size: 15px; }
+  .content :global(table) { border-collapse: collapse; margin: 20px 0; width: 100%; font-size: 14px; }
+  .content :global(th), .content :global(td) { padding: 8px 12px; border: 1px solid var(--border); text-align: left; }
+  .content :global(th) { background: var(--surface); color: var(--bronce); font-weight: 600; }
+  .back { margin-top: 40px; color: var(--muted); font-size: 14px; }
+</style>

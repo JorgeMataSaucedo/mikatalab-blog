@@ -1,0 +1,55 @@
+---
+const path = Astro.url.pathname;
+const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
+---
+<header>
+  <div class="container hdr">
+    <a href="/" class="logo">
+      <span class="dot"></span>
+      <span class="brand">mikatalab</span>
+    </a>
+    <nav>
+      <a href="/" class:list={[{active: isActive('/') && path === '/'}]}>home</a>
+      <a href="/blog" class:list={[{active: isActive('/blog')}]}>blog</a>
+      <a href="/vera" class:list={[{active: isActive('/vera')}]}>vera</a>
+      <a href="/spec" class:list={[{active: isActive('/spec')}]}>spec</a>
+      <a href="/about" class:list={[{active: isActive('/about')}]}>about</a>
+    </nav>
+  </div>
+</header>
+<style>
+  header {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(15,16,19,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; }
+  .logo:hover { opacity: 1; }
+  .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 8px var(--signal);
+  }
+  .brand { font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: -0.02em; }
+  nav { display: flex; gap: 18px; flex-wrap: wrap; }
+  nav a {
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+    transition: all .15s;
+  }
+  nav a:hover { color: var(--ink); }
+  nav a.active { color: var(--bronce); border-bottom-color: var(--bronce); opacity: 1; }
+</style>

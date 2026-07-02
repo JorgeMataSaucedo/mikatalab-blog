@@ -1,0 +1,104 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = 'Mikata AI Lab', description = 'audit-first agentic infrastructure · Mexico · portfolio 2026-2027' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <style is:global>
+      :root {
+        --grafito: #0F1013;
+        --surface: #1A1B1F;
+        --border: #26272C;
+        --ink: #EDEDED;
+        --muted: #8A8A8A;
+        --muted-text: #B5B5B5;
+        --sangre: #C7A8FF;       /* rosa-púrpura · SANGRE canon linaje */
+        --bronce: #B87333;       /* metal · OJOS canon linaje · valor/dinero */
+        --signal: #4BD490;       /* verde · sano/pass */
+        --alert: #EF4444;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--grafito);
+        color: var(--ink);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+      }
+      a { color: var(--sangre); text-decoration: none; transition: opacity .15s; }
+      a:hover { opacity: .8; }
+      code, pre { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.9em; }
+      pre {
+        background: rgba(0,0,0,0.4);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        overflow-x: auto;
+        line-height: 1.5;
+      }
+      code:not(pre code) {
+        background: rgba(199,168,255,0.1);
+        color: var(--sangre);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.85em;
+      }
+      h1, h2, h3, h4 { font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; }
+      h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 32px 0 16px; }
+      h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 40px 0 12px; color: var(--ink); }
+      h3 { font-size: 1.25rem; margin: 24px 0 8px; color: var(--bronce); }
+      p { margin: 12px 0; color: var(--muted-text); }
+      ul, ol { margin: 12px 0 12px 24px; color: var(--muted-text); }
+      li { margin: 4px 0; }
+      blockquote {
+        border-left: 3px solid var(--bronce);
+        padding-left: 16px;
+        margin: 20px 0;
+        color: var(--muted-text);
+        font-style: italic;
+      }
+      hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+      strong { color: var(--ink); font-weight: 600; }
+      em { color: var(--muted-text); }
+      .container {
+        max-width: 780px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+      .pill.signal { color: var(--signal); background: rgba(75,212,144,0.12); border: 1px solid rgba(75,212,144,0.35); }
+      .pill.bronce { color: var(--bronce); background: rgba(184,115,51,0.12); border: 1px solid rgba(184,115,51,0.35); }
+      .pill.sangre { color: var(--sangre); background: rgba(199,168,255,0.12); border: 1px solid rgba(199,168,255,0.35); }
+    </style>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

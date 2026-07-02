@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<Base title="Blog · Mikata AI Lab" description="Notas técnicas · decisiones canónicas · construcción en vivo de infraestructura agéntica auditable.">
+  <Header />
+  <main class="container">
+    <header class="head">
+      <h1>blog</h1>
+      <p>notas técnicas · decisiones canon · construcción en vivo</p>
+    </header>
+    <ul class="list">
+      {posts.length === 0 && <li class="empty">todavía no hay posts publicados · pronto.</li>}
+      {posts.map(post => (
+        <li>
+          <a href={`/blog/${post.slug}`}>
+            <div class="meta">
+              <time>{post.data.pubDate.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+              {post.data.tags.map(t => <span class="tag">{t}</span>)}
+            </div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  .head { margin-bottom: 40px; }
+  .head p { color: var(--muted); margin-top: 8px; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list li { border-top: 1px solid var(--border); }
+  .list li:last-child { border-bottom: 1px solid var(--border); }
+  .list a {
+    display: block;
+    padding: 24px 0;
+    color: var(--ink);
+  }
+  .list a:hover { opacity: 1; }
+  .list a:hover h2 { color: var(--sangre); }
+  .meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .meta time { font-family: 'JetBrains Mono', monospace; }
+  .tag { padding: 2px 8px; border-radius: 6px; background: rgba(199,168,255,0.1); color: var(--sangre); font-size: 11px; }
+  h2 { font-size: 22px; margin: 10px 0 6px; transition: color .2s; }
+  .list p { color: var(--muted-text); font-size: 14px; margin: 0; }
+  .empty { padding: 24px 0; color: var(--muted); font-style: italic; }
+</style>

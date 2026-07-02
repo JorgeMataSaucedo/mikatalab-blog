@@ -1,0 +1,134 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const latest = posts[0];
+---
+<Base title="Mikata AI Lab · audit-first agentic infrastructure">
+  <Header />
+  <main class="container">
+    <section class="hero">
+      <span class="pill signal">Live · Azure Container Apps</span>
+      <h1>audit-first<br/>agentic infrastructure</h1>
+      <p class="lead">
+        <strong>Mika Core</strong> es una capa de orquestación LLM con guardián semántico, memoria persistente y auditoría trazable · construida en Azure desde Q2 2026 · ejecutando en producción.
+      </p>
+      <p class="lead">
+        <strong>Vera</strong> es la primera aplicación pública · asistente IA para operadores de logística en México · cada respuesta trazable a una fila SQL · zero cross-tenant memory by design.
+      </p>
+      <div class="ctas">
+        <a href="/vera" class="cta primary">conocer a Vera →</a>
+        <a href="/spec" class="cta">ver spec técnico</a>
+      </div>
+    </section>
+
+    <section class="stack">
+      <h2>lo que se ha construido</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="pill bronce">Capa 1</span>
+          <h3>Autoconciencia</h3>
+          <p>5 personas orquestadoras · MCP server "Mika vía Claude Code" · agencia límites canonizados.</p>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Capa 2</span>
+          <h3>Observabilidad</h3>
+          <p>Log stream tail-live · guardián semántico pre-output · state machine · endpoints /guardian/reviews.</p>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Capa 3</span>
+          <h3>Agencia</h3>
+          <p>ExecutionPlan · AgencyApproval workflow · límites de acción declarativos.</p>
+        </div>
+        <div class="card">
+          <span class="pill bronce">Memory Layer</span>
+          <h3>Recuerdo persistente</h3>
+          <p>save · recall · semantic search vía embeddings · IsProtected canon · backup cron nightly.</p>
+        </div>
+      </div>
+    </section>
+
+    {latest && (
+      <section class="latest">
+        <h2>último post</h2>
+        <a href={`/blog/${latest.slug}`} class="post-card">
+          <div class="meta">
+            <time>{latest.data.pubDate.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+            {latest.data.tags.map(t => <span class="tag">{t}</span>)}
+          </div>
+          <h3>{latest.data.title}</h3>
+          <p>{latest.data.description}</p>
+          <span class="read">leer post →</span>
+        </a>
+      </section>
+    )}
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { padding: 60px 0 40px; }
+  .hero { padding: 40px 0 60px; }
+  .hero h1 {
+    background: linear-gradient(120deg, var(--ink) 30%, var(--sangre) 70%, var(--bronce) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.03em;
+  }
+  .lead { font-size: 17px; color: var(--muted-text); margin: 16px 0; max-width: 640px; }
+  .lead strong { color: var(--ink); }
+  .ctas { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+  .cta {
+    display: inline-block; padding: 10px 20px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    border: 1px solid var(--border);
+    color: var(--ink);
+  }
+  .cta.primary {
+    background: linear-gradient(120deg, var(--sangre), var(--bronce));
+    color: black;
+    border: none;
+  }
+  .stack { margin-top: 40px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .card {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--bronce); transform: translateY(-2px); }
+  .card .pill { margin-bottom: 12px; }
+  .card h3 { margin: 8px 0 10px; font-size: 16px; color: var(--ink); }
+  .card p { font-size: 13px; color: var(--muted-text); margin: 0; }
+  .latest { margin-top: 40px; }
+  .post-card {
+    display: block;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--ink);
+    margin-top: 20px;
+    transition: border-color .2s;
+  }
+  .post-card:hover { border-color: var(--sangre); opacity: 1; }
+  .meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+  .meta time { font-family: 'JetBrains Mono', monospace; }
+  .tag { padding: 2px 8px; border-radius: 6px; background: rgba(199,168,255,0.1); color: var(--sangre); font-size: 11px; }
+  .post-card h3 { margin: 10px 0 8px; font-size: 20px; color: var(--ink); }
+  .post-card p { color: var(--muted-text); margin: 0 0 12px; font-size: 14px; }
+  .read { color: var(--bronce); font-size: 13px; font-weight: 600; }
+</style>
