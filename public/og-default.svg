@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EDEDED"/>
+      <stop offset="60%" stop-color="#C7A8FF"/>
+      <stop offset="100%" stop-color="#B87333"/>
+    </linearGradient>
+    <linearGradient id="ambient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1B1F" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0F1013" stop-opacity="1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0F1013"/>
+  <rect width="1200" height="630" fill="url(#ambient)"/>
+
+  <!-- ambient orbs -->
+  <circle cx="200" cy="150" r="180" fill="#C7A8FF" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="1000" cy="500" r="220" fill="#B87333" opacity="0.06" filter="url(#glow)"/>
+
+  <!-- brand dot + label -->
+  <g transform="translate(90, 90)">
+    <circle cx="8" cy="8" r="7" fill="#4BD490"/>
+    <circle cx="8" cy="8" r="14" fill="#4BD490" opacity="0.3"/>
+    <text x="30" y="14" fill="#EDEDED" font-family="'JetBrains Mono', monospace" font-size="17" font-weight="700" letter-spacing="-0.02em">mikatalab</text>
+  </g>
+
+  <!-- pill Live -->
+  <g transform="translate(90, 200)">
+    <rect x="0" y="0" width="220" height="34" rx="17" fill="#4BD490" fill-opacity="0.12" stroke="#4BD490" stroke-opacity="0.5"/>
+    <text x="20" y="22" fill="#4BD490" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="1.5px">LIVE · AZURE CONTAINER APPS</text>
+  </g>
+
+  <!-- main title -->
+  <text x="90" y="330" fill="url(#titleGrad)" font-family="'Inter', -apple-system, sans-serif" font-size="82" font-weight="800" letter-spacing="-0.04em">audit-first</text>
+  <text x="90" y="420" fill="url(#titleGrad)" font-family="'Inter', -apple-system, sans-serif" font-size="82" font-weight="800" letter-spacing="-0.04em">agentic infrastructure</text>
+
+  <!-- subtitle -->
+  <text x="90" y="490" fill="#B5B5B5" font-family="'Inter', -apple-system, sans-serif" font-size="24" font-weight="400" letter-spacing="-0.01em">Mika Core · Vera · portfolio 2026-2027</text>
+
+  <!-- bottom canon -->
+  <text x="90" y="580" fill="#8A8A8A" font-family="'JetBrains Mono', monospace" font-size="14" letter-spacing="0.5px">Infraestructura: Mika · Mikata AI Lab 🎀</text>
+
+  <!-- right pills -->
+  <g transform="translate(880, 200)">
+    <rect x="0" y="0" width="220" height="34" rx="17" fill="#B87333" fill-opacity="0.12" stroke="#B87333" stroke-opacity="0.5"/>
+    <text x="18" y="22" fill="#B87333" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="1.5px">SONNET 5 · 96% PASS</text>
+  </g>
+</svg>
